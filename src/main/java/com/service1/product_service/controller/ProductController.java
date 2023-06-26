@@ -7,16 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.service1.product_service.controller.dto.ProductRequest;
+import com.service1.product_service.dto.ProductRequest;
+import com.service1.product_service.service.ProductService;
 
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
 	
+	private final ProductService productService;
+	
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProduct(@RequestBody ProductRequest productRequqest) {
-		
+	public void createProduct(@RequestBody ProductRequest productRequest) {
+		productService.createProduct(productRequest);
 	}
 
 }
