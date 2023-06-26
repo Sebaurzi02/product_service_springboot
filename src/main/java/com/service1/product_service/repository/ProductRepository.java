@@ -6,5 +6,4 @@ import com.service1.product_service.model.Product;
 
 
 public interface ProductRepository extends JpaRepository<Product,Long>{
-
 }
